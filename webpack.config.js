@@ -1,13 +1,14 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+var path = require('path');
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: './src/index.js',
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ["babel-loader"]
+        use: ['babel-loader']
       }
     ]
   },
@@ -15,17 +16,17 @@ module.exports = {
     extensions: ["*", ".js", ".jsx"]
   },
   output: {
-    path: __dirname + "/client",
-    publicPath: "/",
-    filename: "bundle.js"
+    path: path.resolve(__dirname + '/client'),
+    publicPath: '/',
+    filename: 'bundle.js'
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./clie      nt/index.html",
-      filename: "./index.html"
+      template: './client/index.html',
+      filename: './index.html'
     })
   ],
   devServer: {
-    contentBase: "./client"
+    contentBase: './client'
   }
 };
