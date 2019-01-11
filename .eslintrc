@@ -3,6 +3,8 @@
   "extends": ["airbnb-base"],
   "rules": {
     "no-unused-vars": 0,
-    "no-undef": "off"
+    "no-undef": "off",
+    "semi": ["error", "always"],
+    "quotes": ["error", "single"]
   }
 }
