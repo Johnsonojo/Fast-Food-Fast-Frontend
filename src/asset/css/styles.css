@@ -1,5 +1,3 @@
-@import "./normalize.css";
-
 /* BASIC STYLING */
 
 body {
@@ -807,4 +805,30 @@ https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal_bottom */
   to {
     opacity: 1;
   }
+}
+
+/* display Messages */
+
+.display-message {
+  width: 100%;
+  text-align: center;
+  height: 25px;
+  position: fixed;
+  background: black;
+  /* background: #17a2b8; */
+  padding: 20px 25px;
+  color: #fff;
+  font-family: "Comfortaa", cursive;
+  font-size: 16px;
+  border-radius: 4px;
+  transition: all 0.5s ease-in-out;
+  top: calc(100vh - 65px);
+}
+
+.display-message_success {
+  background: #1d6b4f;
+}
+
+.display-message_error {
+  background: #b82e33;
 }
