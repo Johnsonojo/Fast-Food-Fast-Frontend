@@ -10,9 +10,9 @@ export const GET_ALL_MENU = 'GET_ALL_MENU';
 export const GET_ALL_MENU_PASS_MSG = 'GET_ALL_MENU_PASS_MSG';
 export const GET_ALL_MENU_FAIL_MSG = 'GET_ALL_MENU_FAIL_MSG';
 
-// export const POST_ORDER = 'POST_ORDER';
-// export const POST_ORDER_PASS_MSG = 'POST_ORDER_PASS_MSG';
-// export const POST_ORDER_FAIL_MSG = 'POST_ORDER_FAIL_MSG';
+export const POST_ORDER = 'POST_ORDER';
+export const POST_ORDER_PASS_MSG = 'POST_ORDER_PASS_MSG';
+export const POST_ORDER_FAIL_MSG = 'POST_ORDER_FAIL_MSG';
 
 // export const GET_ORDERS = 'GET_ORDER';
 // export const GET_ORDERS_PASS_MSG = 'GET_ORDER_PASS_MSG';
