@@ -4,11 +4,11 @@ import { createMemoryHistory } from 'history';
 import { render, fireEvent } from 'react-testing-library';
 import 'react-testing-library/cleanup-after-each';
 import 'jest-dom/extend-expect';
-import App from '../src/components/App';
+import App from './App';
 
 test('Home component should render', () => {
   const history = createMemoryHistory({ initialEntries: ['/'] });
-  const { getByTestId, queryByTestId, getByText } = render(
+  const { getByText } = render(
     <Router history={history}>
       <App />
     </Router>,

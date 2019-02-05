@@ -808,14 +808,32 @@ https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal_bottom */
 }
 
 /* display Messages */
+.messageDisplay,
+.errorDisplay {
+  font-family: "Comfortaa", cursive;
+  height: auto;
+  margin-bottom: 5px;
+  margin-bottom: 10px;
+}
 
-.display-message {
+.messageDisplay {
+  background: #ddebdc;
+  color: #35532f;
+}
+
+.errorDisplay,
+.error {
+  background: #efd9da;
+  color: #61283a;
+}
+
+/* .display-message {
   width: 100%;
   text-align: center;
   height: 25px;
   position: fixed;
   background: black;
-  /* background: #17a2b8; */
+  background: #17a2b8;
   padding: 20px 25px;
   color: #fff;
   font-family: "Comfortaa", cursive;
@@ -831,4 +849,4 @@ https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal_bottom */
 
 .display-message_error {
   background: #b82e33;
-}
+} */

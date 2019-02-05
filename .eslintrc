@@ -6,5 +6,9 @@
     "no-undef": "off",
     "semi": ["error", "always"],
     "quotes": ["error", "single"]
+  },
+  "env": {
+    "jest": true,
+    "browser": true
   }
 }
