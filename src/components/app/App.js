@@ -5,8 +5,8 @@ import Home from '../home/Home';
 import Login from '../auth/login/Login';
 import Signup from '../auth/signup/Signup';
 import UserAllMenu from '../menu/UserAllMenu';
-// import OrderConfirmation from '../order/OrderConfirmation';
-// import OrderHistory from '../order/OrderHistory';
+import OrderConfirmation from '../order/OrderConfirmation';
+import OrderHistory from '../order/OrderHistory';
 import NoMatch from '../NoMatch';
 
 const App = () => (
@@ -16,9 +16,9 @@ const App = () => (
         <Route exact path="/" component={Home} />
         <Route path="/signup" component={Signup} />
         <Route path="/login" component={Login} />
-        {/* {/* <Route path="/menu" component={UserAllMenu} /> */}
+        <Route path="/menu" component={UserAllMenu} />
         <Route path="/order-confirmation" component={OrderConfirmation} />
-        <Route path="/order-history" component={OrderHistory} /> */}
+        <Route path="/order-history" component={OrderHistory} />
         <Route component={NoMatch} />
       </Switch>
     </Fragment>
