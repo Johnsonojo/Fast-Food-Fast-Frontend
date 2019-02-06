@@ -1,18 +1,32 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import toastr from 'toastr';
-import { getOrders } from '../../actions/order';
-import { decoded } from '../../utils/auth';
+import { getOrders, deleteOrder } from '../../actions/order';
+import { getDecodedToken } from '../../utils/auth';
 
 class OrderHistory extends Component {
   async componentDidMount() {
-    const userId = decoded.id;
+    const userId = getDecodedToken().id;
     await this.props.getOrders(userId);
   }
 
+  deletingOrder = async (id) => {
+    if (!id) return;
+    const userId = getDecodedToken().id;
+    await this.props.deleteOrder(userId, id);
+    toastr.success('Order deleted successfully');
+  };
+
+  onLogout = () => {
+    const { logoutUser: logout } = this.props;
+    localStorage.clear();
+    logout();
+  };
+
   renderOrderHistory = () => {
-    const { username } = decoded;
+    const { username } = getDecodedToken();
     const { order } = this.props;
     return order.allOrder.map(oneOrder => (
       <div className="admin-order-pane" key={oneOrder.id}>
@@ -36,8 +50,12 @@ class OrderHistory extends Component {
           </div>
           <hr />
           <div className="func-btn">
-            {/* <button className="btn btn-sec">Accept</button> */}
-            <button className="btn btn-sec-danger delBtn">Delete</button>
+            <button
+              className="btn btn-sec-danger delBtn"
+              onClick={() => this.deletingOrder(oneOrder.id)}
+            >
+              Delete
+            </button>
           </div>
         </div>
       </div>
@@ -60,7 +78,7 @@ class OrderHistory extends Component {
             <Link to="/order-history" className="link">
               My Order
             </Link>
-            <Link to="/login" className="link">
+            <Link to="/login" className="link" onClick={this.onLogout}>
               Logout
             </Link>
           </div>
@@ -80,6 +98,11 @@ class OrderHistory extends Component {
   }
 }
 
+OrderHistory.propTypes = {
+  order: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  deleteOrder: PropTypes.func,
+};
+
 const mapStateToProps = state => ({
   order: state.order,
   message: state.order.message,
@@ -87,5 +110,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getOrders },
+  { getOrders, deleteOrder },
 )(OrderHistory);

@@ -6,8 +6,6 @@ import MockAdapter from 'axios-mock-adapter';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
 import thunk from 'redux-thunk';
-import 'react-testing-library/cleanup-after-each';
-import 'jest-dom/extend-expect';
 import axiosInstance from '../../../utils/axiosInstance';
 import reducers from '../../../reducers';
 import Signup from './Signup';
@@ -73,7 +71,8 @@ describe('Signup Component', () => {
         id: 6,
         username: 'johnwick',
         email: 'johnwik@gmail.com',
-        token: 'eynewToken',
+        token:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJKb2huc29uIiwiZW1haWwiOiJqb2huc29uQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTU0OTM2MzUxMiwiZXhwIjoxNTQ5NDQ5OTEyfQ.JQY4YQF--rOlCCO7r5MzzL3EATT3DDUFt73iLpG8oEk',
       },
       message: 'You signed up successfully',
     });
