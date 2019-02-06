@@ -8,8 +8,6 @@ import MockAdapter from 'axios-mock-adapter';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
 import thunk from 'redux-thunk';
-import 'react-testing-library/cleanup-after-each';
-import 'jest-dom/extend-expect';
 import axiosInstance from '../../../utils/axiosInstance';
 import reducers from '../../../reducers';
 import * as authUtils from '../../../utils/auth';
@@ -46,11 +44,13 @@ describe('Login Component', () => {
     submitButton = container.querySelector('button[type=submit]');
   });
 
-  afterEach(axiosMock.reset);
-  afterAll(() => {
-    history.push.mockRestore();
-    axiosMock.restore();
-  });
+  // afterEach(axiosMock.reset);
+  // afterAll(() => {
+  //   history.push.mockRestore();
+  //   axiosMock.restore();
+  // });
+  afterEach(axiosMock.restore);
+  afterAll(history.push.mockRestore);
 
   const fillLoginForm = () => {
     fireEvent.change(emailInput, { target: { value: 'adesewa@gmail.com' } });
@@ -64,7 +64,14 @@ describe('Login Component', () => {
   });
 
   test('fill and submit form with success', async () => {
-    await axiosMock.onPost().replyOnce(201, { token: 'ThisIsNotArealToken' });
+    const { getByText, container } = LoginComponent;
+
+    await axiosMock.onPost().replyOnce(201, {
+      data: {
+        token: 'ThisIsNotArealToken',
+      },
+      status: 'success',
+    });
 
     fillLoginForm();
     fireEvent.click(submitButton);
@@ -72,17 +79,5 @@ describe('Login Component', () => {
     await wait(() => expect(authUtils.getToken()).toBe('ThisIsNotArealToken'));
     expect(authUtils.getToken()).toBe('ThisIsNotArealToken');
     expect(history.push).toHaveBeenCalledTimes(1);
-    // await waitForDomChange({ container });
   });
-  //   test('fill and submit form with error', async () => {
-  //     const { getByText, container } = LoginComponent;
-
-  //     await axiosMock.onPost().replyOnce(500, {
-  //       data: [{ msg: 'login not successful' }],
-  //     });
-  //     fillLoginForm();
-  //     fireEvent.click(submitButton);
-  //     await waitForDomChange({ container });
-  //     expect(getByText('Not successful')).toBeInTheDocument();
-  //   });
 });

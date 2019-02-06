@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getAllMenu } from '../../actions/menu';
+import { logoutUser } from '../../actions';
 
 class UserAllMenu extends Component {
   state = {
@@ -16,6 +17,12 @@ class UserAllMenu extends Component {
     event.preventDefault();
     const orderDetails = { foodName, foodPrice, id };
     window.localStorage.setItem('order', JSON.stringify(orderDetails));
+  };
+
+  onLogout = () => {
+    const { logoutUser: logout } = this.props;
+    localStorage.clear();
+    logout();
   };
 
   renderMenu = () => {
@@ -52,10 +59,10 @@ class UserAllMenu extends Component {
             <Link to="/menu" className="link">
               Available Food
             </Link>
-            <Link to="/users/:userId/orders" className="link">
+            <Link to="/order-history" className="link">
               My Order
             </Link>
-            <Link to="/login" className="link">
+            <Link to="/login" className="link" onClick={this.onLogout}>
               Logout
             </Link>
           </div>
@@ -63,9 +70,7 @@ class UserAllMenu extends Component {
         <div className="app">
           <div className="dashboard">
             <div className="dash-welcome">
-              <h2 className="topmessages">
-                Welcome <span>Johnson</span>
-              </h2>
+              <h2 className="topmessages" />
             </div>
             <div>
               <h3 className="topmessage">Available Food Items</h3>
@@ -87,5 +92,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getAllMenu },
+  { getAllMenu, logoutUser },
 )(UserAllMenu);

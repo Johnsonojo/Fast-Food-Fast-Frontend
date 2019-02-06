@@ -25,7 +25,11 @@ export const LoginUser = formValues => async (dispatch) => {
     dispatch({ type: LOGIN, payload: { data, status } });
   } catch (error) {
     const errorMessage = error.response.data;
-
     dispatch({ type: LOGIN_FAIL_MSG, payload: errorMessage });
   }
+};
+
+export const logoutUser = () => {
+  authUtils.removeToken();
+  return { type: LOG_OUT };
 };
