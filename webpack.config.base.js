@@ -24,13 +24,12 @@ module.exports = {
     extensions: ['*', '.js', '.jsx'],
   },
   output: {
-    path: path.resolve(`${__dirname}dist`),
-    publicPath: '/',
+    path: path.resolve('dist'),
     filename: 'bundle.js',
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './public/index.html',
+      template: './src/index.html',
       filename: './index.html',
     }),
   ],
