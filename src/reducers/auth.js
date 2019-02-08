@@ -1,6 +1,6 @@
 import {
   SIGNUP,
-  SIGNUP_PASS_MSG,
+  // SIGNUP_PASS_MSG,
   SIGNUP_FAIL_MSG,
   LOGIN,
   LOG_OUT,
@@ -13,8 +13,8 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case SIGNUP:
       return { ...state, user: action.payload };
-    case SIGNUP_PASS_MSG:
-      return { ...state, message: action.payload };
+    // case SIGNUP_PASS_MSG:
+    //   return { ...state, message: action.payload };
     case SIGNUP_FAIL_MSG:
       return { ...state, message: action.payload };
     case LOGIN:

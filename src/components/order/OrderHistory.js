@@ -12,10 +12,9 @@ class OrderHistory extends Component {
     await this.props.getOrders(userId);
   }
 
-  deletingOrder = async (id) => {
-    if (!id) return;
+  deletingOrder = async (orderId) => {
     const userId = getDecodedToken().id;
-    await this.props.deleteOrder(userId, id);
+    await this.props.deleteOrder(userId, orderId);
     toastr.success('Order deleted successfully');
   };
 

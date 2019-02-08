@@ -44,11 +44,6 @@ describe('Login Component', () => {
     submitButton = container.querySelector('button[type=submit]');
   });
 
-  // afterEach(axiosMock.reset);
-  // afterAll(() => {
-  //   history.push.mockRestore();
-  //   axiosMock.restore();
-  // });
   afterEach(axiosMock.restore);
   afterAll(history.push.mockRestore);
 

@@ -44,6 +44,7 @@ class Signup extends Component {
 
   submit = async (event) => {
     event.preventDefault();
+    if (this.state.message) return;
     const formValues = this.getFormValues();
 
     await this.props.SignupUser(formValues);
@@ -109,7 +110,7 @@ class Signup extends Component {
             </label>
             <input
               type="password"
-              placeholder="Enter Password"
+              placeholder="Minimum of 6 characters e.g Abcdef123"
               id="password"
               name="password"
               value={password}
@@ -123,7 +124,7 @@ class Signup extends Component {
             </label>
             <input
               type="password"
-              placeholder="Confirm Password"
+              placeholder="Minimum of 6 characters e.g Abcdef123"
               id="confirmPassword"
               name="confirmPassword"
               value={confirmPassword}

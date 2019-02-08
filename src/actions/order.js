@@ -34,7 +34,7 @@ export const getOrders = userId => async (dispatch) => {
     const { data } = response.data;
     dispatch({ type: GET_ORDERS, payload: data.reverse() });
   } catch (error) {
-    const errorMessage = error.response.data.message;
+    const errorMessage = error.response.data;
     dispatch({ type: GET_ORDERS_FAIL_MSG, payload: errorMessage });
   }
 };
@@ -47,6 +47,6 @@ export const deleteOrder = (userId, orderId) => async (dispatch) => {
     const response = await axios.delete(`/users/${userId}/orders/${orderId}`);
     dispatch({ type: DELETE_ORDERS, payload: orderId });
   } catch (error) {
-    dispatch({ type: DELETE_ORDERS_FAIL_MSG, payload: error.response });
+    dispatch({ type: DELETE_ORDERS_FAIL_MSG, payload: error.response.data });
   }
 };
