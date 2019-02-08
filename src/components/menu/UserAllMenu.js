@@ -3,20 +3,25 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getAllMenu } from '../../actions/menu';
 import { logoutUser } from '../../actions';
+import PreLoader from '../PreLoader';
 
 class UserAllMenu extends Component {
   state = {
     message: false,
+    isFetching: true,
   };
 
   async componentDidMount() {
     await this.props.getAllMenu();
+    this.setState({ isFetching: false });
   }
 
   clickToOrder = (event, foodName, foodPrice, id) => {
     event.preventDefault();
+    this.setState({ isFetching: true });
     const orderDetails = { foodName, foodPrice, id };
     window.localStorage.setItem('order', JSON.stringify(orderDetails));
+    this.setState({ isFetching: false });
   };
 
   onLogout = () => {
@@ -27,23 +32,29 @@ class UserAllMenu extends Component {
 
   renderMenu = () => {
     const { menu } = this.props;
-    return menu.allMenu.map(food => (
-      <div className="card-group" key={food.id}>
-        <div className="card">
-          <img src={food.foodimage} alt={food.foodname} />
-          <hr />
-          <h3>{food.foodname}</h3>
-          <p className="price">&#8358;{food.foodprice}</p>
-          <hr />
-          <button
-            className="btn order-btn"
-            onClick={event => this.clickToOrder(event, food.foodname, food.foodprice, food.id)}
-          >
-            <Link to="/order-confirmation">Click to Order</Link>
-          </button>
+    const { isFetching } = this.state;
+
+    if (!isFetching) {
+      return menu.allMenu.map(food => (
+        <div className="card-group" key={food.id}>
+          <div className="card">
+            <img src={food.foodimage} alt={food.foodname} />
+            <hr />
+            <h3>{food.foodname}</h3>
+            <p className="price">&#8358;{food.foodprice}</p>
+            <hr />
+            <button
+              type="button"
+              className="btn order-btn"
+              onClick={event => this.clickToOrder(event, food.foodname, food.foodprice, food.id)}
+            >
+              <Link to="/order-confirmation">Click to Order</Link>
+            </button>
+          </div>
         </div>
-      </div>
-    ));
+      ));
+    }
+    return <PreLoader />;
   };
 
   render() {

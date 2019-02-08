@@ -1,32 +1,21 @@
 import React from 'react';
-import { createStore, applyMiddleware } from 'redux';
-import {
-  render, fireEvent, wait, waitForDomChange,
-} from 'react-testing-library';
-import { Provider } from 'react-redux';
+import { fireEvent, waitForDomChange } from 'react-testing-library';
 import MockAdapter from 'axios-mock-adapter';
-import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
-import thunk from 'redux-thunk';
-import axiosInstance from '../../utils/axiosInstance';
-import reducers from '../../reducers';
+import { createMemoryHistory } from 'history';
 import UserAllMenu from './UserAllMenu';
+import axiosInstance from '../../utils/axiosInstance';
+import { renderWithRedux } from '../../__mocks__/helpers';
+
+const history = createMemoryHistory({ initialEntries: ['/menu'] });
 
 const axiosMock = new MockAdapter(axiosInstance, { delayResponse: 500 });
-const store = createStore(reducers, applyMiddleware(thunk));
-const history = createMemoryHistory({ initialEntries: ['/', '/menu'] });
-history.push = jest.fn();
 
-const renderWithRedux = (ui, reduxStore) => ({
-  ...render(<Provider store={reduxStore}>{ui}</Provider>),
-  store,
-});
-
-describe('Menu Component', () => {
+describe('<UserAllMenu/>', () => {
   let AllMenuComponent;
   beforeEach(() => {
     axiosMock.onGet().replyOnce(200, {
-      allMenu: [
+      data: [
         {
           id: 6,
           foodname: 'meatpie',
@@ -34,7 +23,7 @@ describe('Menu Component', () => {
           foodimage: 'eynewToken',
         },
         {
-          id: 6,
+          id: 7,
           foodname: 'Shawarma',
           foodprice: '100',
           foodimage: 'eynewToken',
@@ -46,17 +35,20 @@ describe('Menu Component', () => {
 
   afterEach(axiosMock.reset);
   afterAll(axiosMock.restore);
-  afterEach(jest.resetAllMocks);
-  //   afterEach(axiosMock.restore);
-  //     afterAll(history.push.mockRestore);
-  test('fetches all menu on componentDidMount', async () => {
+
+  test('it fetches all menu on componentDidMount', async () => {
     const ui = (
       <Router history={history}>
-        <UserAllMenu history={history} />
+        <UserAllMenu />
       </Router>
     );
-    AllMenuComponent = renderWithRedux(ui, store);
-    const { getByText } = AllMenuComponent;
-    await wait(() => expect(getByText(/meatpie/i)).toBeInTheDocument());
+
+    AllMenuComponent = renderWithRedux(ui);
+    const { getByText, container } = AllMenuComponent;
+    await waitForDomChange({ container });
+    const orderBtn = container.querySelector('button.btn.order-btn');
+    expect(getByText(/click to order/i)).toBeInTheDocument();
+
+    fireEvent.click(orderBtn);
   });
 });

@@ -64,8 +64,6 @@ describe('Signup Component', () => {
   });
 
   test('should signup a user successfully', async () => {
-    const { getByText, container } = SignupComponent;
-
     axiosMock.onPost().replyOnce(200, {
       data: {
         id: 6,
@@ -74,13 +72,12 @@ describe('Signup Component', () => {
         token:
           'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJKb2huc29uIiwiZW1haWwiOiJqb2huc29uQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTU0OTM2MzUxMiwiZXhwIjoxNTQ5NDQ5OTEyfQ.JQY4YQF--rOlCCO7r5MzzL3EATT3DDUFt73iLpG8oEk',
       },
-      message: 'You signed up successfully',
+      status: 'You signed up successfully',
     });
+    const { getByText, container, debug } = SignupComponent;
 
     fillSignupForm();
-    fireEvent.click(submitButton);
-    await waitForDomChange({ container });
-    expect(getByText('You signed up successfully')).toBeInTheDocument();
+    fireEvent.submit(submitButton);
   });
 
   test('should not signup a user successfully', async () => {
@@ -90,12 +87,13 @@ describe('Signup Component', () => {
       data: [{ msg: 'signup not successful' }],
     });
     fillSignupForm();
-    fireEvent.click(submitButton);
+    fireEvent.submit(submitButton);
     await waitForDomChange({ container });
     expect(getByText('signup not successful')).toBeInTheDocument();
   });
+
   test('should throw an error for unmatched password', async () => {
-    const { getByText, queryByText } = SignupComponent;
+    const { getByText, queryByText, container } = SignupComponent;
 
     fireEvent.keyUp(confirmPasswordInput);
 
@@ -111,5 +109,6 @@ describe('Signup Component', () => {
     fireEvent.keyUp(confirmPasswordInput);
 
     expect(queryByText(/passwords does not match!/i)).not.toBeInTheDocument();
+    // await waitForDomChange({ container });
   });
 });

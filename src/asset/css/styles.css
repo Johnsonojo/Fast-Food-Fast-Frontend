@@ -3,15 +3,12 @@
 body {
   font-family: "Nunito", sans-serif;
   font-size: 16px;
-  /* padding: 8px; */
   width: 100%;
   height: 100%;
   background: #f9f9f9;
   margin: 0;
   display: flex;
-  /* min-height: 100%; */
   flex-direction: column;
-  /* color: white; */
   background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
     url(../img/nigerian-meatpies.jpg) no-repeat center center;
   background-color: white;
@@ -71,8 +68,6 @@ html {
   /* IE10 */
   flex-wrap: wrap;
   margin: 0 -10px;
-  /* height: 100%; */
-  /* width: 100%; */
 }
 
 .col-25 {
@@ -129,7 +124,6 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* margin-top: 70px; */
   flex-grow: 10;
 }
 
@@ -161,13 +155,10 @@ label {
 .btn {
   border-radius: 3px;
   border-style: none;
-  /* margin: 10px 0; */
   padding: 8px;
-  /* padding: 10px 50px; */
   font-family: "Nunito", sans-serif;
   font-size: 17px;
-  /* font-weight: bold; */
-  /* position: relative; */
+
   overflow: hidden;
   outline: none;
 }
@@ -204,7 +195,6 @@ label {
 }
 
 .btn-sec {
-  /* border: 2px solid #4CAF50; */
   background-color: transparent;
   color: #4caf50;
   border-color: #4caf50;
@@ -221,7 +211,6 @@ label {
 }
 
 .btn-sec-danger {
-  /* border: 2px solid #d50000; */
   background-color: transparent;
   color: #d50000;
   border-color: #d50000;
@@ -292,11 +281,6 @@ span.price {
   color: black;
 }
 
-/* .col-50 .container>div {
-    display: flex;
-    flex-direction: row;
-} */
-
 select {
   background-color: inherit;
   padding: 0.3em 0.3em 0.3em 0em;
@@ -317,10 +301,6 @@ select {
   border-color: initial;
   border-image: initial;
 }
-
-/* .order-content {
-    display: flex;
-} */
 
 .container .order-content > div {
   display: flex;
@@ -506,7 +486,6 @@ hr {
   float: left;
   clear: right;
   text-decoration: none;
-  /* margin: 0 20px; */
   line-height: 70px;
   padding: 0 10px 10px 10px;
   font-size: 20px;
@@ -575,7 +554,6 @@ form {
   }
   .container {
     width: 101%;
-    /* border-radius: 15px; */
   }
   form {
     padding-bottom: 40px;
@@ -745,12 +723,6 @@ https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal_bottom */
   padding: 2px 16px;
 }
 
-/* .modal-footer {
-    padding: 2px 16px;
-    background-color: #5cb85c;
-    color: white;
-} */
-
 @media only screen and (max-width: 600px) {
   .modal-content {
     width: 100%;
@@ -827,26 +799,180 @@ https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal_bottom */
   color: #61283a;
 }
 
-/* .display-message {
-  width: 100%;
-  text-align: center;
-  height: 25px;
-  position: fixed;
-  background: black;
-  background: #17a2b8;
-  padding: 20px 25px;
-  color: #fff;
-  font-family: "Comfortaa", cursive;
-  font-size: 16px;
-  border-radius: 4px;
-  transition: all 0.5s ease-in-out;
-  top: calc(100vh - 65px);
+/* https://icons8.com/cssload */
+#fountainG {
+  position: relative;
+  width: 234px;
+  height: 28px;
+  margin: auto;
 }
 
-.display-message_success {
-  background: #1d6b4f;
+.fountainG {
+  position: absolute;
+  top: 0;
+  background-color: rgb(0, 0, 0);
+  width: 28px;
+  height: 28px;
+  animation-name: bounce_fountainG;
+  -o-animation-name: bounce_fountainG;
+  -ms-animation-name: bounce_fountainG;
+  -webkit-animation-name: bounce_fountainG;
+  -moz-animation-name: bounce_fountainG;
+  animation-duration: 1.5s;
+  -o-animation-duration: 1.5s;
+  -ms-animation-duration: 1.5s;
+  -webkit-animation-duration: 1.5s;
+  -moz-animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  -o-animation-iteration-count: infinite;
+  -ms-animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  animation-direction: normal;
+  -o-animation-direction: normal;
+  -ms-animation-direction: normal;
+  -webkit-animation-direction: normal;
+  -moz-animation-direction: normal;
+  transform: scale(0.3);
+  -o-transform: scale(0.3);
+  -ms-transform: scale(0.3);
+  -webkit-transform: scale(0.3);
+  -moz-transform: scale(0.3);
+  border-radius: 19px;
+  -o-border-radius: 19px;
+  -ms-border-radius: 19px;
+  -webkit-border-radius: 19px;
+  -moz-border-radius: 19px;
 }
 
-.display-message_error {
-  background: #b82e33;
-} */
+#fountainG_1 {
+  left: 0;
+  animation-delay: 0.6s;
+  -o-animation-delay: 0.6s;
+  -ms-animation-delay: 0.6s;
+  -webkit-animation-delay: 0.6s;
+  -moz-animation-delay: 0.6s;
+}
+
+#fountainG_2 {
+  left: 29px;
+  animation-delay: 0.75s;
+  -o-animation-delay: 0.75s;
+  -ms-animation-delay: 0.75s;
+  -webkit-animation-delay: 0.75s;
+  -moz-animation-delay: 0.75s;
+}
+
+#fountainG_3 {
+  left: 58px;
+  animation-delay: 0.9s;
+  -o-animation-delay: 0.9s;
+  -ms-animation-delay: 0.9s;
+  -webkit-animation-delay: 0.9s;
+  -moz-animation-delay: 0.9s;
+}
+
+#fountainG_4 {
+  left: 88px;
+  animation-delay: 1.05s;
+  -o-animation-delay: 1.05s;
+  -ms-animation-delay: 1.05s;
+  -webkit-animation-delay: 1.05s;
+  -moz-animation-delay: 1.05s;
+}
+
+#fountainG_5 {
+  left: 117px;
+  animation-delay: 1.2s;
+  -o-animation-delay: 1.2s;
+  -ms-animation-delay: 1.2s;
+  -webkit-animation-delay: 1.2s;
+  -moz-animation-delay: 1.2s;
+}
+
+#fountainG_6 {
+  left: 146px;
+  animation-delay: 1.35s;
+  -o-animation-delay: 1.35s;
+  -ms-animation-delay: 1.35s;
+  -webkit-animation-delay: 1.35s;
+  -moz-animation-delay: 1.35s;
+}
+
+#fountainG_7 {
+  left: 175px;
+  animation-delay: 1.5s;
+  -o-animation-delay: 1.5s;
+  -ms-animation-delay: 1.5s;
+  -webkit-animation-delay: 1.5s;
+  -moz-animation-delay: 1.5s;
+}
+
+#fountainG_8 {
+  left: 205px;
+  animation-delay: 1.64s;
+  -o-animation-delay: 1.64s;
+  -ms-animation-delay: 1.64s;
+  -webkit-animation-delay: 1.64s;
+  -moz-animation-delay: 1.64s;
+}
+
+@keyframes bounce_fountainG {
+  0% {
+    transform: scale(1);
+    background-color: rgb(0, 0, 0);
+  }
+
+  100% {
+    transform: scale(0.3);
+    background-color: rgb(255, 255, 255);
+  }
+}
+
+@-o-keyframes bounce_fountainG {
+  0% {
+    -o-transform: scale(1);
+    background-color: rgb(0, 0, 0);
+  }
+
+  100% {
+    -o-transform: scale(0.3);
+    background-color: rgb(255, 255, 255);
+  }
+}
+
+@-ms-keyframes bounce_fountainG {
+  0% {
+    -ms-transform: scale(1);
+    background-color: rgb(0, 0, 0);
+  }
+
+  100% {
+    -ms-transform: scale(0.3);
+    background-color: rgb(255, 255, 255);
+  }
+}
+
+@-webkit-keyframes bounce_fountainG {
+  0% {
+    -webkit-transform: scale(1);
+    background-color: rgb(0, 0, 0);
+  }
+
+  100% {
+    -webkit-transform: scale(0.3);
+    background-color: rgb(255, 255, 255);
+  }
+}
+
+@-moz-keyframes bounce_fountainG {
+  0% {
+    -moz-transform: scale(1);
+    background-color: rgb(0, 0, 0);
+  }
+
+  100% {
+    -moz-transform: scale(0.3);
+    background-color: rgb(255, 255, 255);
+  }
+}

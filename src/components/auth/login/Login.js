@@ -56,7 +56,7 @@ class Login extends Component {
             </Link>
           </div>
         </div>
-        <h2 className="topmessage">Welcome Back</h2>
+        <h2 className="topmessage">Welcome</h2>
         <hr className="w-50" />
         <h2 className="topmessage">Login</h2>
 

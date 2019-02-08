@@ -1,5 +1,5 @@
 export const SIGNUP = 'SIGNUP';
-export const SIGNUP_PASS_MSG = 'SIGNUP_PASS_MSG';
+// export const SIGNUP_PASS_MSG = 'SIGNUP_PASS_MSG';
 export const SIGNUP_FAIL_MSG = 'SIGNUP_FAIL_MSG';
 
 export const LOGIN = 'LOGIN';
