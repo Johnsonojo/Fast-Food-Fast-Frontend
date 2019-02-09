@@ -18,6 +18,10 @@ describe('<OrderConfirmation/>', () => {
   });
   let OrderConfirmComponent;
 
+  afterEach(axiosMock.reset);
+  afterAll(axiosMock.restore);
+  afterEach(jest.resetAllMocks);
+
   const initialState = {
     auth: {
       user: {
@@ -98,37 +102,5 @@ describe('<OrderConfirmation/>', () => {
 
     await waitForDomChange();
     expect(getByText(/Order posted successfully/i)).toBeInTheDocument();
-    // console.log(container.innerHTML);
-
-    // await waitForDomChange({ container });
   });
-
-  // test('it fetches all users orders on componentDidMount', async () => {
-  //   const ui = (
-  //     <Router history={history}>
-  //       <OrderConfirmation />
-  //     </Router>
-  //   );
-
-  //   OrderConfirmComponent = renderWithRedux(ui, {
-  //     initialState,
-  //   });
-
-  //   const { container, getByText } = OrderConfirmComponent;
-  //   // const orderData = {
-  //   //   foodname: 'Yamarita',
-  //   //   foodprice: 900,
-  //   //   qty: 9,
-  //   //   totalamount: 8100,
-  //   //   address: 'Block M Timehin Street Agbede',
-  //   //   phone: '2348180799821',
-  //   //   city: 'Lagos',
-  //   // };
-  //   axiosMock.onPost().replyOnce(500);
-  //   expect(getByText(/Place order/i)).toBeInTheDocument();
-  //   fireEvent.click(getByText(/place order/i));
-
-  //   await waitForDomChange();
-  //   expect(getByText(/Order not posted successfully/i)).toBeInTheDocument();
-  // });
 });

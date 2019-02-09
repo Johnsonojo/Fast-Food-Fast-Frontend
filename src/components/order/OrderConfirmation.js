@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import toastr from 'toastr';
 import { postOrder } from '../../actions/order';
+import Navbar from '../Navbar';
 
 class OrderConfirmation extends Component {
   state = {
@@ -60,24 +61,7 @@ class OrderConfirmation extends Component {
     const selection = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     return (
       <div>
-        <div className="sidenav">
-          <label htmlFor="toggle">&#9776;</label>
-          <input type="checkbox" id="toggle" />
-          <div className="menu">
-            <Link to="/" className="sitelink">
-              Fast-Food-Fast
-            </Link>
-            <Link to="/menu" className="link">
-              Available Food
-            </Link>
-            <Link to="/order-history" className="link">
-              My Order
-            </Link>
-            <Link to="/login" className="link">
-              Logout
-            </Link>
-          </div>
-        </div>
+        <Navbar />
 
         <h2 className="topmessage">Your Order Details</h2>
 

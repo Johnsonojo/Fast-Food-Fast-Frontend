@@ -28,7 +28,7 @@ export const LoginUser = formValues => async (dispatch) => {
   }
 };
 
-export const logoutUser = () => {
+export const logoutUser = () => (dispatch) => {
   authUtils.removeToken();
-  return { type: LOG_OUT };
+  return dispatch({ type: LOG_OUT });
 };
