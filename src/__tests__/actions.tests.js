@@ -67,8 +67,9 @@ describe('Redux actions', () => {
 
     test('logoutUser', () => {
       expect(authUtils.getToken()).toBe('eynewToken');
-      logoutUser();
-      expect(authUtils.getToken()).toBe(null);
+      logoutUser()(dispatch);
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenLastCalledWith({ type: 'LOG_OUT' });
     });
   });
 

@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import toastr from 'toastr';
 import { getOrders, deleteOrder } from '../../actions/order';
 import { getDecodedToken } from '../../utils/auth';
+import Navbar from '../Navbar';
 
 class OrderHistory extends Component {
   async componentDidMount() {
@@ -16,12 +17,6 @@ class OrderHistory extends Component {
     const userId = getDecodedToken().id;
     await this.props.deleteOrder(userId, orderId);
     toastr.success('Order deleted successfully');
-  };
-
-  onLogout = () => {
-    const { logoutUser: logout } = this.props;
-    localStorage.clear();
-    logout();
   };
 
   renderOrderHistory = () => {
@@ -64,24 +59,7 @@ class OrderHistory extends Component {
   render() {
     return (
       <div>
-        <div className="sidenav">
-          <label htmlFor="toggle">&#9776;</label>
-          <input type="checkbox" id="toggle" />
-          <div className="menu">
-            <Link to="/" className="sitelink">
-              Fast-Food-Fast
-            </Link>
-            <Link to="/menu" className="link">
-              Available Food
-            </Link>
-            <Link to="/order-history" className="link">
-              My Order
-            </Link>
-            <Link to="/login" className="link" onClick={this.onLogout}>
-              Logout
-            </Link>
-          </div>
-        </div>
+        <Navbar />
         <div className="app">
           <div className="dash-welcome">
             <h2 className="topmessage">Your Orders</h2>

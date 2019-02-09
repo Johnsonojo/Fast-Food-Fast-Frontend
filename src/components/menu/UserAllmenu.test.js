@@ -13,7 +13,18 @@ const axiosMock = new MockAdapter(axiosInstance, { delayResponse: 500 });
 
 describe('<UserAllMenu/>', () => {
   let AllMenuComponent;
-  beforeEach(() => {
+
+  afterEach(axiosMock.reset);
+  afterAll(axiosMock.restore);
+
+  test('it fetches all menu on componentDidMount', async () => {
+    const ui = (
+      <Router history={history}>
+        <UserAllMenu />
+      </Router>
+    );
+
+    AllMenuComponent = renderWithRedux(ui);
     axiosMock.onGet().replyOnce(200, {
       data: [
         {
@@ -31,10 +42,13 @@ describe('<UserAllMenu/>', () => {
       ],
       message: 'All menu fetched successfully',
     });
-  });
+    const { getByText, container } = AllMenuComponent;
+    await waitForDomChange({ container });
+    const orderBtn = container.querySelector('button.btn.order-btn');
+    expect(getByText(/click to order/i)).toBeInTheDocument();
 
-  afterEach(axiosMock.reset);
-  afterAll(axiosMock.restore);
+    fireEvent.click(orderBtn);
+  });
 
   test('it fetches all menu on componentDidMount', async () => {
     const ui = (
@@ -44,11 +58,12 @@ describe('<UserAllMenu/>', () => {
     );
 
     AllMenuComponent = renderWithRedux(ui);
+    axiosMock.onGet().replyOnce(500, {
+      data: [{}],
+      message: 'Error fetching menu',
+    });
     const { getByText, container } = AllMenuComponent;
     await waitForDomChange({ container });
-    const orderBtn = container.querySelector('button.btn.order-btn');
-    expect(getByText(/click to order/i)).toBeInTheDocument();
-
-    fireEvent.click(orderBtn);
+    expect(getByText(/available food/i)).toBeInTheDocument();
   });
 });

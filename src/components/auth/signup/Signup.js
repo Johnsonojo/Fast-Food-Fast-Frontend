@@ -44,6 +44,7 @@ class Signup extends Component {
 
   submit = async (event) => {
     event.preventDefault();
+
     if (this.state.message) return;
     const formValues = this.getFormValues();
 
@@ -104,7 +105,6 @@ class Signup extends Component {
               required
               onChange={this.handleInputChange}
             />
-
             <label htmlFor="password">
               <b>Password</b>
             </label>
