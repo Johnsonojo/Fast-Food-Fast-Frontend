@@ -9,7 +9,7 @@ import { renderWithRedux } from '../../__mocks__/helpers';
 
 const history = createMemoryHistory({ initialEntries: ['/order-confirmation'] });
 
-const axiosMock = new MockAdapter(axiosInstance, { delayResponse: 500 });
+const axiosMock = new MockAdapter(axiosInstance, { delayResponse: 5 });
 
 describe('<OrderConfirmation/>', () => {
   const order = JSON.stringify({ foodName: 'Glazed Donought', foodPrice: '250', id: 4 });
@@ -65,6 +65,22 @@ describe('<OrderConfirmation/>', () => {
     },
   };
 
+  const initialState2 = {
+    auth: {
+      user: {
+        data: {
+          token:
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJKb2huc29uIiwiZW1haWwiOiJqb2huc29uQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTU0OTY0MjYwMCwiZXhwIjoxNTQ5NzI5MDAwfQ.p8Ck8Mf4GVrZSqW2KuJrke6cXs5EuKgGjeQVHRly62o',
+        },
+        status: 'success',
+      },
+    },
+    menu: {
+      allMenu: [{}],
+      message: 'All menu fetched',
+    },
+    order: {},
+  };
   test('it fetches all users orders on componentDidMount', async () => {
     const ui = (
       <Router history={history}>

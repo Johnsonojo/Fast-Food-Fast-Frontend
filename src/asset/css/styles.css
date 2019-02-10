@@ -801,7 +801,7 @@ https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal_bottom */
 
 /* http://tobiasahlin.com/spinkit/ */
 .spinner {
-  margin: 100px auto 0;
+  margin: 10px auto 0;
   width: 70px;
   text-align: center;
 }
@@ -849,4 +849,16 @@ https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal_bottom */
     -webkit-transform: scale(1);
     transform: scale(1);
   }
+}
+
+.no-order {
+  height: 80%;
+}
+
+.no-order-statement {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: #45a049;
+  background-color: white;
 }

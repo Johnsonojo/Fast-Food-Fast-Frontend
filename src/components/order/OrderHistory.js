@@ -57,6 +57,7 @@ class OrderHistory extends Component {
   };
 
   render() {
+    const { order } = this.props;
     return (
       <div>
         <Navbar />
@@ -66,7 +67,15 @@ class OrderHistory extends Component {
             <hr />
           </div>
         </div>
-        <div className="container">{this.renderOrderHistory()}</div>
+        {order.allOrder && order.allOrder.length === 0 ? (
+          <div className="container no-order">
+            <div className="no-order-statement">
+              <h1>You have no order yet</h1>
+            </div>
+          </div>
+        ) : (
+          <div className="container">{this.renderOrderHistory()}</div>
+        )}
         <div className="footer change">
           <p>&copy; 2018. fast-food-fast. All images from Google.</p>
         </div>
