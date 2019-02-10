@@ -1,7 +1,6 @@
 [![Build Status](https://travis-ci.org/Johnsonojo/Fast-Food-Fast-Frontend.svg?branch=develop)](https://travis-ci.org/Johnsonojo/Fast-Food-Fast-Frontend)
+[![Maintainability](https://api.codeclimate.com/v1/badges/44aeffdb65cc633b74ef/maintainability)](https://codeclimate.com/github/Johnsonojo/Fast-Food-Fast-Frontend/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/44aeffdb65cc633b74ef/test_coverage)](https://codeclimate.com/github/Johnsonojo/Fast-Food-Fast-Frontend/test_coverage)
-
-<!-- [![Maintainability](https://api.codeclimate.com/v1/badges/44aeffdb65cc633b74ef/maintainability)](https://codeclimate.com/github/Johnsonojo/Fast-Food-Fast-Frontend/maintainability) -->
 
 # Fast-Food-Fast-Frontend
 

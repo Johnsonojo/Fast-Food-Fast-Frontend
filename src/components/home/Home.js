@@ -1,23 +1,10 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import MenuNav from '../MenuNav';
 
 const Home = () => (
   <Fragment>
-    <div className="sidenav index">
-      <label htmlFor="toggle">&#9776;</label>
-      <input type="checkbox" id="toggle" />
-      <div className="menu">
-        <Link to="/" className="sitelink">
-          Fast-Food-Fast
-        </Link>
-        <Link to="/login" className="link">
-          Login
-        </Link>
-        <Link to="/signup" className="link">
-          Sign Up
-        </Link>
-      </div>
-    </div>
+    <MenuNav />
     <div className="main-wrapper home">
       <div className="landing">
         <h2>Fast-Food-Fast is a food delivery service app for a restaurant</h2>

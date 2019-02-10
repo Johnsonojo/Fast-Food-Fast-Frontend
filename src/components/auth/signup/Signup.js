@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import MessageBox from '../../MessageBox';
 import { SignupUser } from '../../../actions';
+import MenuNav from '../../MenuNav';
+import PreLoader from '../../PreLoader';
 
 class Signup extends Component {
   state = {
@@ -11,7 +13,12 @@ class Signup extends Component {
     password: '',
     confirmPassword: '',
     message: false,
+    isLoading: true,
   };
+
+  componentDidMount() {
+    this.setState({ isLoading: false });
+  }
 
   handleInputChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
@@ -47,6 +54,7 @@ class Signup extends Component {
 
     if (this.state.message) return;
     const formValues = this.getFormValues();
+    this.setState({ isLoading: true });
 
     await this.props.SignupUser(formValues);
     this.setState({ message: this.props.message });
@@ -60,21 +68,7 @@ class Signup extends Component {
 
     return (
       <div>
-        <div className="sidenav index">
-          <label htmlFor="toggle">&#9776;</label>
-          <input type="checkbox" id="toggle" />
-          <div className="menu">
-            <Link to="/" className="sitelink">
-              Fast-Food-Fast
-            </Link>
-            <Link to="/login" className="link">
-              Login
-            </Link>
-            <Link to="/signup" className="link">
-              Sign Up
-            </Link>
-          </div>
-        </div>
+        <MenuNav />
         <h2 className="topmessage">Signup</h2>
         <hr className="w-50" />
         <form id="signup" onSubmit={this.submit}>
@@ -136,6 +130,7 @@ class Signup extends Component {
             <button className="btn btn-pri w-100" type="submit">
               Sign Up
             </button>
+            {this.state.isLoading && <PreLoader customClasses="auth-spinner" />}
             <p>
               Do you already have an account? Login
               <Link to="/login">

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import toastr from 'toastr';
 import { postOrder } from '../../actions/order';
+import PreLoader from '../PreLoader';
 import Navbar from '../Navbar';
 
 class OrderConfirmation extends Component {
@@ -13,11 +14,13 @@ class OrderConfirmation extends Component {
     phone: '',
     address: '',
     city: '',
+    isLoading: true,
   };
 
   componentDidMount() {
     const userOrder = JSON.parse(localStorage.getItem('order'));
     this.setState({ order: userOrder });
+    this.setState({ isLoading: false });
   }
 
   handleChange = (event) => {

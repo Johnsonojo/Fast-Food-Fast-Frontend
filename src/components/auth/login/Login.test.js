@@ -75,4 +75,23 @@ describe('Login Component', () => {
     expect(authUtils.getToken()).toBe('ThisIsNotArealToken');
     expect(history.push).toHaveBeenCalledTimes(1);
   });
+
+  // test('Throws error for incomplete credential', async () => {
+  //   const fillLogin = () => {
+  //     fireEvent.change(emailInput, { target: { value: 'adesewa@gmail.com' } });
+  //     fireEvent.change(passwordInput, { target: { value: '' } });
+  //   };
+
+  //   await axiosMock.onPost().replyOnce(500, {
+  //     status: 'failure',
+  //   });
+  //   const { getByText, container } = LoginComponent;
+
+  //   fillLogin();
+  //   fireEvent.click(submitButton);
+
+  //   expect(getByText(/Login not successful/i)).toBeInTheDocument();
+  //   // await waitForDomChange({});
+  //   console.log(container.innerHTML);
+  // });
 });

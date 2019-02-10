@@ -18,10 +18,9 @@ class UserAllMenu extends Component {
 
   clickToOrder = (event, foodName, foodPrice, id) => {
     event.preventDefault();
-    this.setState({ isFetching: true });
+
     const orderDetails = { foodName, foodPrice, id };
     window.localStorage.setItem('order', JSON.stringify(orderDetails));
-    this.setState({ isFetching: false });
   };
 
   renderMenu = () => {
@@ -66,9 +65,6 @@ class UserAllMenu extends Component {
             <hr />
             <div className="card-row">{this.renderMenu()}</div>
           </div>
-        </div>
-        <div className="footer change">
-          <p>&copy; 2018. fast-food-fast. All images from Google.</p>
         </div>
       </div>
     );
